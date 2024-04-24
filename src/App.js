@@ -6,7 +6,6 @@ import Register from './pages/user-registration';
 import RideCreationPage from './pages/ride-creation-page';
 import RideSearch from './pages/ride-search';
 import UserProfile from './pages/user-profile';
-
 function App() {
   return (
     <div className="App">
