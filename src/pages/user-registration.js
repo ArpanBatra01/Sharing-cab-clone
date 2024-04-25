@@ -48,13 +48,13 @@ function Register() {
 
         />
       </label>
-      <label>Enter your address:
+      <div><label>Enter your address:
         <input
          type="text"
          value={address}
          onChange={(e)=>setaddress(e.target.value)}
         />
-      </label>
+      </label></div>
       <label>Enter your city:
         <input
          type="text"
