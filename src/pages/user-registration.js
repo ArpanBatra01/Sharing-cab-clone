@@ -10,6 +10,7 @@ function Register() {
   const [address, setaddress]=useState("");
   const [city, setcity]=useState("");
   const [state, setstate]=useState("");
+  const [image, setimage]=useState("");
   
 
   const handleSubmit = (event) => {
@@ -20,9 +21,9 @@ function Register() {
   return (
     <form onSubmit={handleSubmit}>
       <div><label>Enter your name:
-        <input 
-          type="text" 
-          value={name}
+        <input
+        type="text"
+        value={name}  
           onChange={(e) => setName(e.target.value)}
         />
       </label></div>
@@ -55,23 +56,29 @@ function Register() {
          onChange={(e)=>setaddress(e.target.value)}
         />
       </label></div>
-      <label>Enter your city:
+      <div><label>Add your image:
+        <input
+         type="file"
+         value={image}
+         onChange={(e)=>setimage(e.target.value)}
+        />
+      </label></div>
+      <div><label>Enter your city:
         <input
          type="text"
          value={city}
          onChange={(e)=>setcity(e.target.value)}
         />
-      </label>
-      <label>Enter your state:
+      </label></div>
+      <div><label>Enter your state:
         <input
          type="text"
          value={state}
          onChange={(e)=>setstate(e.target.value)}
         />
-      </label>
-     
-         
-      <input type="submit" />
+      </label></div>
+
+      <input type="submit"/>
     </form>
   )
 }
