@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
 import ReactDOM from 'react-dom/client';
 import { isCompositeComponentWithType } from "react-dom/test-utils";
@@ -13,6 +14,19 @@ function Register() {
   const [state, setstate]=useState("");
   const [image, setimage]=useState("");
   
+  const [selectedImage, setSelectedImage] = useState();
+
+  const imageChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedImage(e.target.files[0]);
+    }
+  };
+
+  const removeSelectedImage = () => {
+    setSelectedImage();
+  };
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,7 +59,7 @@ function Register() {
          onChange={(e)=> setphoneNumber(e.target.value)}
         />
       </label></div>
-       <label><span>Enter your password:</span>
+       <label><span>Enter your Password:</span>
         <input
          type="password"
          placeholder="Enter Password"
@@ -55,17 +69,28 @@ function Register() {
         />
       </label>
       <div><label><span>Add your image:</span>
+      <>
+      <div>
         <input
-         type="file"
-         placeholder="Select Image"
-         id="frame"
-      
-         value={image}
-     
-         onChange={(e)=>setimage(e.target.value)}
-    
-        
-        /> 
+          accept="image/*"
+          type="file"
+          onChange={imageChange}
+        />
+
+        {selectedImage && (
+          <div>
+            <img
+              style={{width:200, height:"auto"}}
+              src={URL.createObjectURL(selectedImage)}
+              alt="Thumb"
+            />
+            <button onClick={removeSelectedImage}>
+              Remove This Image
+            </button>
+          </div>
+        )}
+      </div>
+    </> 
       <div><label><span>Enter your address:</span>
         <input
          type="text"
