@@ -4,6 +4,22 @@
   text-justify:auto;
   padding-left: 10px;
 }
+button {
+
+  background-color:lightblue;
+  color:white;
+  font-size: 18px;
+  padding:6px 25px;
+  margin-top: 4px;
+  border-radius: 10px;
+  word-spacing: 10px;
+  
+}
+button:hover{
+  background-color: #04AA6D;
+  
+
+}
 
 
 
@@ -18,6 +34,7 @@ input{
 }
 
 
+
 input[type=submit]{
   width: 100px;
   background-color:#61dafb;
@@ -28,14 +45,13 @@ input[type=submit]{
   border-radius: 4px; 
   cursor:pointer;
   font-size:large;
-
-
 }
 
 
 input[type=submit]:hover{
   background-color: green;
 }
+
 
 label{
   font-size:large;
