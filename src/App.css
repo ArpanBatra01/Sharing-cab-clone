@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align:left;
 
 
@@ -124,18 +124,30 @@ input{
   background-color:white;
   height: 5px;
   font-size: large;
-  color:grey;
-  
+ 
+    
 }
 .ride-form button{
   background-color: #61dafb;
-  font-size: large;
+  font-size: small;
   border-radius: 10px;
-  
+
 }
 .ride-form button:hover{
   background-color:deepskyblue
 
   
 }
-
+.search-form button{
+  background-color: #61dafb;
+  font-size: small;
+  border-radius: 10px;
+}
+.search-form button:hover{
+  background-color: deepskyblue;
+}
+.search-form input{
+  background-color: white;
+  height: 5px;
+  font-size: large;
+} */
