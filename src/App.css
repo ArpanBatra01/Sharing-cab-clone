@@ -151,3 +151,27 @@ input{
   height: 5px;
   font-size: large;
 } */
+.ride-section{
+  background-color: #ddd;
+  margin: 20px;
+  padding: 20px ;
+}
+.cars-detail img{
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  
+}
+
+
+.cars-detail{
+  display: flex;
+  background-color: #ddd;
+  margin: 10px;
+    padding: 10px;
+    justify-content: space-around;
+}
+.title{
+  font-weight: bold;
+  text-transform: capitalize;
+}
