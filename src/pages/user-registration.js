@@ -12,7 +12,7 @@ function Register() {
   const [city, setcity] = useState("");
   const [state, setstate] = useState("");
   const [image, setimage] = useState("");
-
+  
   const [selectedImage, setSelectedImage] = useState();
 
   const imageChange = (e) => {
@@ -45,7 +45,7 @@ function Register() {
       </div>
       <div>
         <label>
-          {" "}
+          
           <span>Enter your email:</span>
           <input
             type="email"
