@@ -12,6 +12,15 @@ function RideCreationPage() {
     event.preventDefault();
     alert(`The location you entered was: ${(pickupLocation, dropLocation)}`);
   };
+  const handleSeatChange = (event) =>{
+
+   if( event.target.value > 4){
+    return
+   }
+   else{
+    setNumber(event.target.value)
+   }
+  }
 
   return (
     <form className="ride-form" onSubmit={handleSubmit}>
@@ -71,7 +80,7 @@ function RideCreationPage() {
               min="1"
               max="4"
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={(e) => handleSeatChange(e)}
             />
           </span>
         </label>
