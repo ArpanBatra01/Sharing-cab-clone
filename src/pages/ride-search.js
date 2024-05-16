@@ -1,10 +1,14 @@
 import { Input } from "antd";
-import { useEffect, useState } from "react";
-import React from "react";
+import { useEffect, useState } from "react"; 
+
 const { Search } = Input;
+
+
+
 
 function RideSearch() {
   const [search, setSearch] = useState("");
+  
   const [cars, setCars] = useState([
     {
       name: "alto",
@@ -121,12 +125,20 @@ function RideSearch() {
       brand: "mahindra",
     },
   ]);
-  const [filterCars, setFilterCars] = useState(cars);
+  const [filterCars,setFilterCars] = useState(cars);
+ 
 
-  const onSearch = (value) => setSearch(value);
+  const onSearch = (value) => 
+    {
+      setSearch(value);
+      add()
+    } 
+  const[count,setCount]=useState(0);
+  
+  
 
   useEffect(() => {
-    if (search.length) {
+    if (search.length && count<=20) {
       // write filter logic here and update filterCars state
 
       let filteredData = cars.filter(function (el) {
@@ -137,8 +149,20 @@ function RideSearch() {
     } else {
       // reset to all cars state
       setFilterCars(cars);
+      if(count>20){
+        alert("search limit can exceed")
+      }
+     
     }
-  }, [search]);
+  }, [search,count]);
+
+ function add(){
+  setCount(count+1)
+
+ }
+
+
+
 
   return (
     <>
@@ -149,6 +173,7 @@ function RideSearch() {
         size="large"
         onSearch={onSearch}
       />
+      <p>Search Count:{count}</p>
 
       {filterCars.map((elem, index, arr) => {
         return (
@@ -190,8 +215,14 @@ function RideSearch() {
               <p>
                 <span className="title">brand : </span> {elem.brand}
               </p>
+              
             </div>
+            
+       
+           
+          
           </div>
+          
         );
       })}
     </>
