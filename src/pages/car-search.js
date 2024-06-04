@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+ 
 function CarSearch() {
   const [cars, setCars] = useState([
     {
@@ -118,25 +118,62 @@ function CarSearch() {
     },
   ]);
 
-  useEffect(() => {
+const[selectedCar,setSelectedCar]=useState("");
+const[searchResult,setSearchResult]=useState("");
 
-  });
+  const handleSearch = () => {
+    console.log("hello")
+
+  }
+  const reset = () => {
+    setSearchResult("")
+  }
+
+  
+ 
+  useEffect(()=>{
+    console.log(selectedCar)
+    let findCar = cars.find((element)=> element.name == selectedCar)
+    console.log(findCar)
+    setSearchResult(findCar)
+
+
+  },[selectedCar]);
 
   return (
     <>
-  
-  
       <label>
-        Choose the Car:
-        <select>
-         
-            
-      
-        </select> 
-    
+        Select the car:
+        <span>
+          <select
+            name="Select the car"
+            value={selectedCar}
+            onChange={(e) => setSelectedCar(e.target.value)}
+          >
+           {
+            cars.map((element, index) => {
+              return <option value={element.name}> {element.name} </option>
+            })
+           }
+          </select>
+        </span>
       </label>
+      <button type="submit" onClick={handleSearch}>submit</button>
+      <button type="button" onClick={reset}>Reset</button>
+      <div><label>Output:</label></div>
+      <div>{searchResult?.name}</div>
+      <div><label>Car Color:</label>{searchResult?.color}</div>
+      <div><label>Car Price:</label>{searchResult?.price}</div>
+      <div><label>Car Brand:</label>{searchResult?.brand}</div>
+      <div><label>Car Engine:</label>{searchResult?.engine}</div>
+      <div><label>Model:</label>{searchResult?.model}</div>
+      <div><label>insurance:</label>{searchResult?.insurance}</div>
+      <div><label>Fuel Type:</label>{searchResult?.fueltype}</div>
+      <div><label>Image:</label><img src={searchResult?.image}></img></div>
+      
+      
+
     </>
   );
 }
-
-export default CarSearch;
+export default CarSearch
