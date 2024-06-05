@@ -3,9 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Login from './pages/user-login';
 import Register from './pages/user-registration';
-import RideCreationPage from './pages/ride-creation-page';
-import RideSearch from './pages/ride-search';
+import FavouriteProductCount from './pages/favourite-product-count';
+
 import UserProfile from './pages/user-profile';
+import ProductDetail from './pages/product-detail';
+import FavouriteProductPage from './pages/favourite-product-page';
+import AddCart from './pages/add-cart';
+import Home from './pages/home';
+
 function App() {
   return (
     <div className="App">
@@ -14,9 +19,13 @@ function App() {
           <Route index element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="ride-creation-page" element={<RideCreationPage />} />
-          <Route path="ride-search" element={<RideSearch />} />
+          <Route path="favourite-product-count" element={<FavouriteProductCount />} />
+          
           <Route path="user-profile" element={<UserProfile />} />
+          <Route path="product-detail" element={<ProductDetail/>}/>
+          <Route path="favourite-product-page" element={<FavouriteProductPage/>}/>
+          <Route path="home" element={<Home/>}/>
+          <Route path="add-cart" element={<AddCart/>}/>
           {/* <Route path="*" element={<NoPage />} /> */}
       </Routes>
     </BrowserRouter>

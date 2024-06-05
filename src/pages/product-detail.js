@@ -1,14 +1,6 @@
-import { Input } from "antd";
-import { useEffect, useState } from "react"; 
-
-const { Search } = Input;
-
-
-
-
-function RideSearch() {
-  const [search, setSearch] = useState("");
-  
+import { useState, useEffect } from "react";
+ 
+function CarSearch() {
   const [cars, setCars] = useState([
     {
       name: "alto",
@@ -51,7 +43,7 @@ function RideSearch() {
     },
     {
       name: "creta",
-      model: "2010",
+      model: "2024",
       color: "white",
       price: "18 lakhs",
       image:
@@ -125,108 +117,64 @@ function RideSearch() {
       brand: "mahindra",
     },
   ]);
-  const [filterCars,setFilterCars] = useState(cars);
+
+const[selectedCar, setSelectedCar]=useState("");
+const[searchResult, setSearchResult]=useState("");
+
+  const handleSearch = () => {
+    console.log("hello")
+
+  }
+  const reset = () => {
+    setSearchResult("")
+  }
+
+  
  
-
-  const onSearch = (value) => 
-    {
-      setSearch(value);
-      add()
-    } 
-  const[count,setCount]=useState(0);
-  
-  
-
-  useEffect(() => {
-    if (search.length && count<=20) {
-      // write filter logic here and update filterCars state
-
-      let filteredData = cars.filter(function (el) {
-        return el.name == search;
-      });
-    
-      setFilterCars(filteredData);
-    } else {
-      // reset to all cars state
-      setFilterCars(cars);
-      if(count>20){
-        alert("search limit can exceed")
-      }
-     
-    }
-  }, [search,count]);
-
- function add(){
-  setCount(count+1)
-
- }
+  useEffect(()=>{
+    console.log(selectedCar)
+    let findCar = cars.find((element)=> element.name == selectedCar)
+    console.log(findCar)
+    setSearchResult(findCar)
 
 
-
+  },[selectedCar]);
 
   return (
     <>
-      <Search
-        placeholder="input search text"
-        allowClear
-        enterButton="search"
-        size="large"
-        onSearch={onSearch}
-      />
-      <p>Search Count:{count}</p>
+      <label>
+        Select the car:
+        <span>
+          <select
+            name="Select the car"
+            value={selectedCar}
+            onChange={(e) => setSelectedCar(e.target.value)}
+          >
+           {
+            cars.map((element, index) => {
+              return <option value={element.name}> {element.name} </option>
+            })
+           }
+          </select>
+        </span>
+      </label>
+      <button type="submit" onClick={handleSearch}>submit</button>
+      <button type="button" onClick={reset}>Reset</button>
+      <div><label>Output:</label></div>
+      <div>{searchResult?.name}</div>
+      <div><label>Car Color:</label>{searchResult?.color}</div>
+      <div><label>Car Price:</label>{searchResult?.price}</div>
+      <div><label>Car Brand:</label>{searchResult?.brand}</div>
+      <div><label>Car Engine:</label>{searchResult?.engine}</div>
+      <div><label>Model:</label>{searchResult?.model}</div>
+      <div><label>insurance:</label>{searchResult?.insurance}</div>
+      <div><label>Fuel Type:</label>{searchResult?.fueltype}</div>
+      <div><label>K.M Driven:</label>{searchResult?.kmdriven}</div> 
+      <div><label>Image:</label><img src={searchResult?.image}></img></div>
+      
+      
 
-      {filterCars.map((elem, index, arr) => {
-        return (
-          <div key={index} className="cars-detail">
-            <p>
-              <img src={elem.image}></img>
-            </p>
-            <div>
-              <p>
-                <span className="title"> name : </span> {elem.name}
-              </p>
-              <p>
-                <span className="title"> model : </span> {elem.model}
-              </p>
-              <p>
-                <span className="title">color : </span> {elem.color}
-              </p>
-              <p>
-                <span className="title">price : </span> {elem.price}
-              </p>
-              <p>
-                <span className="title">price : </span> {elem.price}
-              </p>
-            </div>
-            <div>
-              <p>
-                <span className="title">engine : </span> {elem.engine}
-              </p>
-              <p>
-                <span className="title">fueltype : </span> {elem.fueltype}
-              </p>
-              <p>
-                <span className="title">kmdriven : </span> {elem.kmdriven}
-              </p>
-              <p>
-                <span className="title">insurance : </span>{" "}
-                {elem.insurance ? "Yes" : "No"}
-              </p>
-              <p>
-                <span className="title">brand : </span> {elem.brand}
-              </p>
-              
-            </div>
-            
-       
-           
-          
-          </div>
-          
-        );
-      })}
     </>
   );
 }
-
-export default RideSearch;
+export default CarSearch
