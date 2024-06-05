@@ -8,7 +8,7 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The email you entered was: ${email}`);
+    alert(`the email you enter was:${email}`);
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -16,7 +16,7 @@ function Login() {
         <span><input
           type="email"
           value={email}
-          placeholder="Enter email"
+          placeholder="Enter Email"
           onChange={(e) => setEmail(e.target.value)}
         /></span>
       </label>
