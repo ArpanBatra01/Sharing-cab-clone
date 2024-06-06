@@ -10,6 +10,7 @@ import ProductDetail from './pages/product-detail';
 import FavouriteProductPage from './pages/favourite-product-page';
 import AddCart from './pages/add-cart';
 import Home from './pages/home';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
